@@ -86,7 +86,10 @@ miniconda_setup(){
 	for i in "${python_packages[@]}" 
 	do
 		echo "installing" $i
-		conda install -c conda-forge $i -y  
+		conda install -c conda-forge $i -y
+		if [[ $? -ne 0 ]]; then 
+			conda install -c conda-forge $i -y 
+		fi 
 	done
 }
 
